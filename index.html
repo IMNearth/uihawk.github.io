@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="UIHawk">
+    <meta name="keywords" content="GUI Agent, Multimodal Large Language Model, Screen Understanding">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UI-Hawk: Unleashing the Screen Stream Understanding for GUI Agents</title>
+  
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+  <!-- <meta name="generator" content="Jekyll v3.9.3" /> -->
+  <meta property="og:title" content="UI-Hawk: Unleashing the Screen Stream Understanding for GUI Agents" />
+  <meta property="og:locale" content="en_US" />
+  <link rel="canonical" href="https://imnearth.github.io/UIHawk/" />
+  <meta property="og:url" content="https://imnearth.github.io/UIHawk/" />
+  <meta property="og:site_name" content="UI-Hawk: Unleashing the Screen Stream Understanding for GUI Agents" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./static/images/uihawk_logo.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="UI-Hawk: Unleashing the Screen Stream Understanding for GUI Agents" />
+  <meta name="twitter:description" content="UI-Hawk: Unleashing the Screen Stream Understanding for GUI Agents" />
+  <meta name="twitter:site" content="@CanyuChen3" />
+  <meta name="twitter:image" content="./static/images/uihawk_logo.png" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","headline":"UIHawk","name":"UIHawk","url":"https://imnearth.github.io/UIHawk/"}</script>
+  <!-- End Jekyll SEO tag -->
+  
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/uihawk_logo.png">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+  
+    <style>
+      .grey-box {
+          background-color: #c0c0c0; /* Grey color */
+          color: rgb(70, 70, 70); /* White text color */
+          padding: 20px; /* Padding inside the box */
+          margin: 20px; /* Margin outside the box */
+          text-align: center; /* Center the text */
+      }
+    </style>
+
+  </head>
+
+
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+          <a class="navbar-item" href="http://www.fudan-disc.com/">
+          <span class="icon">
+              <i class="fas fa-home"></i>
+          </span>
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More Research
+            </a>
+            <div class="navbar-dropdown">
+                <a class="navbar-item" href="https://github.com/IMNearth/CoAT/">
+                    ⛓️CoAT
+                </a>
+                <a class="navbar-item" href="https://github.com/yuyq96/TextHawk/">
+                    🦅TextHawk
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 id="UI-Hawk: Unleashing the Screen Stream Understanding for GUI Agents" class="title is-2 publication-title">
+              <p align="center">
+                <img src="static/images/uihawk_logo.png" width="80" style="margin-bottom: 0.5;"/>
+                UI-Hawk: Unleashing the Screen Stream Understanding for GUI Agents
+              <p>
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://imnearth.github.io/">Jiwen Zhang</a><sup>1,2*</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://yuyq96.github.io/">Yaqi Yu</a><sup>2*</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://mhliao.github.io/">Minghui Liao</a><sup>2†</sup>,
+              </span>
+              <span class="author-block">
+                Wentao Li<sup>2</sup>,
+              </span>
+              <span class="author-block">
+                Jihao Wu<sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="http://www.fudan-disc.com/people/zywei">Zhongyu Wei</a><sup>1†</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Fudan University,</span>
+              <span class="author-block"><sup>2</sup>Huawei Inc.</span>
+            </div>
+            <div class="is-size-6 publication-authors">
+              <span class="author-block">* Equal contribution</span>
+              <span class="author-block"></span>
+              <span class="author-block">† Corresponding Author</span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                    <a href="https://www.preprints.org/manuscript/202408.2137/v1" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-archive"></i>
+                      </span>
+                      <span>Preprint</span>
+                    </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/IMNearth/UIHawk/blob/main/assets/UIHawk_preprint.pdf" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>PDF</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/IMNearth/UIHawk"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+                <!-- <span class="link-block">
+                  <a href="http://210.16.188.56:60033/"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fa fa-play-circle"></i>
+                    </span>
+                    <span>Demo</span>
+                    </a>
+                </span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+        <figure>
+          <img src="static/images/uihawk_examples.png"  alt="survey" >
+        </figure>
+        <div style="text-align:center">
+          <div class="content has-text-justified">
+            <p>
+              <i><b>Example of a GUI navigation episode together with the screen understanding tasks supported by UI-Hawk.</b></i>
+              The user instruction is “I want to use Chrome to discover a new hiking trail.” 
+              The bounding boxes predicted by UI-Hawk are represented by red rectangles. 
+              The navigation actions are denoted by yellow hands and yellow rectangles.
+            </p>
+          </div>
+      </div>
+    </div>
+    <!-- --------------------------- -->
+  </section>
+
+
+  <section class="section"  style="background-color:#efeff081">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Graphical User Interface (GUI) agents are expected to precisely operate on the screens of digital devices. Existing GUI agents merely depend on current visual observations and plain-text action history, ignoring the significance of history screens. To mitigate this issue, we propose <i><b>UI-Hawk</b></i>, a visual GUI agent specially designed to processing screen streams encountered during GUI navigation. UI-Hawk incorporates a history-aware visual encoder and an efficient resampler to handle the screen sequences. To acquire a better understanding of screen streams, we define four fundamental tasks ---- <i>UI grounding</i>, <i>UI referring</i>, <i>screen question answering</i>, and <i>screen summarization</i>. We develop an automated data curation method to generate the corresponding training data for UI-Hawk. Along with the efforts above, we have also created a benchmark <i><b>FunUI</b></i> to quantitatively evaluate the fundamental screen understanding abilities of MLLMs. Extensive experiments on FunUI and GUI navigation benchmarks consistently validate that screen stream understanding is not only beneficial but also essential for GUI navigation.
+            </p>
+            <p>
+              <strong>
+                [UPDATE 2024/08/30] We have our paper online. The benchmark is coming soon!  
+              </strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Model Architecture</h2>
+      </div>
+      <div class="content has-text-justified">
+        <br><p>Given that mobile device screenshots typically have high and variable resolutions, a highly efficient and fine-grained perception capability is crucial for developing effective mobile GUI agents. We develop UI-Hawk to possess such capabilities to handle <b>multiple images of any resolution</b> simultaneously, <b>efficient compression of visual tokens</b>, and <b>precise referring and grounding capabilities</b>, by inheriting a lightweight visual encoder, along with an efficient resampler and a large language model enhanced with LoRA modules and a detection head from TextHawk. </p>
+        <p>Importantly, UI-Hawk places a strong emphasis on <i><b>modeling visual history</b></i>. Historical images often contain valuable details pertinent to ongoing tasks, while most GUI agents rely solely on text-based history, like chain-of-actions (Zhan and Zhang 2023) or chain-of-action-thoughts (Zhang et al. 2024b). UI-Hawk addresses this gap by <b>incorporating images of historical screens as model inputs</b>. Notably, we ap- ply a scalable positional encoding and add textual indicators (e.g., “History Screenshot x”) for each historical screen to explicitly represent the screen streams.</p>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <figure>
+          <img src="static/images/uihawk_arch.png" style="width:90%" alt="Figure 1">
+        </figure>
+      </div>
+      <div style="text-align:center">
+        <div class="content has-text-justified">
+          <p>
+            <i><b>Figure 1: Model architecture of UI-Hawk.  </b></i>
+            The text tokenizer, layer normalization, and skip connections are omitted for simplicity. During the pre-training stage, the visual encoder is trained together with the LLM to obtain the fine-grained perception capabilities. During the fine-tuning stage, the visual encoder is frozen and the LLM is tuned by LoRA.
+          </p>
+          </div>
+      </div>
+      <div class="content has-text-justified">
+        <br><p>Given the scarcity of large-scale UI data, we devise an automated data curation method to extract the task-relevant data from diverse screenshots of Chinese and English mobile devices. More details could be found in Section 4 of our paper.</p>
+      </div>
+    </div>
+    <!-- --------------------------- -->
+    <br>    <br>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">FunUI Benchmark</h2>
+      </div>
+      <div class="content has-text-justified">
+        <p>To remedy the blank of comprehensive evaluation data in this area, we introduce <b>FunUI</b>, a bilingual evaluation benchmark encompassing 4 fundamental screen understanding tasks. </p>
+        <p>Concretely, FunUI distinguishes with previous benchmarks on the following aspects:</p>
+        <ul>
+          <li><b>Bilingual</b>: FunUI comprises of 2150 Chinese screens and 9347 English screens from Android devices, annotated with 14k and 18k samples, respectively. This is the first benchmark that enables the assessment of Chinese screen understandings.</li>
+          <li><b>Comprehensive</b>: FunUI includes different evaluation dimensions of screen understanding, including <i>UI grounding</i> and <i>UI referring</i> tasks to access the regional location and identification abilities of models, together with <i>screen question answering</i> and <i>screen summarization</i> tasks that require more integrated analysis of screen contents. </li>
+          <li><b>Diverse</b>: FunUI covers various types of question answering pairs, including grounding and referring questions about 120+ icons and widgets, and complex questions with related to elements relations, attributions, arithmetics and so on. These questions present a greater challenge for models compared to the commonly used OCR-related tasks.</li>
+        </ul>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <figure>
+          <img src="static/images/funui_bench.png" style="width:100%" alt="Figure 2">
+        </figure>
+      </div>
+      <div style="text-align:center">
+        <div class="content has-text-justified">
+          <p>
+            <i><b>Figure 2: Statistics of FunUI Benchmark. </b></i>
+            (a) Distributions of four fundamental tasks. The deep and shallow color represents for English and Chinese, respectively. (b) Various UI types included. (c) Diverse categories of screen question answering pairs. Note that these categories are not mutually excluded. (d) The annotated answer lengths of screen summarization task.
+          </p>
+          </div>
+      </div>
+      </div>
+    </div>
+    <!-- --------------------------- -->
+    <br>    <br>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Experiment Results</h2>
+      </div>
+      <div class="content has-text-justified">
+        <p>Table 1 demonstrates the performance of UI-Hawk compared with previous state-of-the-art models on various screen understanding tasks. On English screens, compared to Spotlight and Ferret-UI, UI-Hawk possesses superior results in UI referring and screen question-answering. On Chinese screens, even a minor version of UI-Hawk, UI-Hawk-Minus, sur-passes Qwen-VL and InternVL2 on grounding and referring by a large margin. </p>
+        <p>Overall, Table 1 suggests that UI-Hawk is a bilingual model with advanced screen understanding capabilities.</p>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <figure>
+          <img src="static/images/uihawk_fundamental_result.png" style="width:80%" alt="Table 1">
+        </figure>
+      </div>
+      <div style="text-align:center">
+        <div class="content has-text-justified">
+          <p>
+            <i><b>Table 1: Performance of UI understanding on FunUI benchmark. </b></i>
+            <i>GRD</i>: grounding, <i>REF</i>: referring, <i>SQA</i>: screen question answering, <i>SUM</i>: screen summarization. “FT?” means whether the model is trained on UI-related tasks. *Due to the budget limit, we randomly sampled 500 samples for each task. †Performance of close-source models is from the original paper.
+          </p>
+          </div>
+      </div>
+      <div class="content has-text-justified">
+        <br><p>We further validate the sequential navigation capability of UI-Hawk. Table 2 illustrates that UI-Hawk significantly outperforms  all other models, achieving a 9% absolute increase in overall action matching score and a 32.5% absolute increase in the prediction accuracy of click operations compared to the most capable OdysseyAgent. Further ablation studies (see our paper) confirm that, the improvements in UI-Hawk are largely attributed to its advanced screen stream understanding ability.</p>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <figure>
+          <img src="static/images/uihak_gui_odyssey_result.png" style="width:80%" alt="Table 2">
+        </figure>
+      </div>
+      <div style="text-align:center">
+        <div class="content has-text-justified">
+          <p>
+            <i><b>Table 2: Sequential navigation performance on GUI-Odyssey+ dataset. </b></i>
+            We report the averaged action matching score on six categories of navigation tasks, including tool, information, shopping, media, social and multi-apps, and the overall action matching score. “ClickAcc” stands for the accuracy of click operations, which directly reflects the grounding ability of models.
+          </p>
+          </div>
+      </div>
+    </div>
+    <!-- --------------------------- -->
+    <!--<br>    <br>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3">Demo</h2>
+        <div class="content has-text-justified">
+          <p></p>
+        </div>
+      </div>
+    </div>-->
+    <!-- --------------------------- -->
+  </section>
+
+  <section class="section"  style="background-color:#efeff081">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+        <h2 class="title is-3">Conclusions</h2>
+        <div class="content has-text-justified">
+          <p>In this paper, we introduced UI-Hawk, the first GUI agent focused on screen stream understanding. Leveraging the efficient architecture to tackle with screen streams, UI-Hawk excels in four fundamental screen understanding tasks. For a comprehensive assessment under both Chinese and English scenarios, we established the bilingual FunUI benchmark to evaluate the fundamental screen comprehension of MLLMs. Extensive experiments demonstrates that UI-Hawk sets new state-of-the-art performance on episodic GUI navigation tasks, highlighting the importance of robust screen understanding for autonomous GUI agents.</p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Citation</h2>
+      <pre><code>
+        @article{202408.2137,
+            title = {UI-Hawk: Unleashing the Screen Stream Understanding for GUI Agents},
+            author = {Jiwen Zhang and Yaqi Yu and Minghui Liao and Wentao Li and Jihao Wu and Zhongyu Wei},
+            doi = {10.20944/preprints202408.2137.v1},
+            url = {https://doi.org/10.20944/preprints202408.2137.v1},
+            year = 2024,
+            month = {August},
+            publisher = {Preprints},
+            journal = {Preprints}
+        }
+      </code></pre>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+</body>  
+</html>
