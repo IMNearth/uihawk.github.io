@@ -4,7 +4,7 @@ This is the homepage repository for the preprint paper: <br>
 **UI-Hawk: Unleashing the Screen Stream Understanding for GUI Agents** [[preprint]()] <br>
 *Jiwen Zhang, yqi Yu, Minghui Liao, Wentao Li, Jihao Wu, Zhongyu Wei* <br>
 
-Please view this homepage at [UIHawk homepage](https://imnearth.github.io/UIHawk/).
+Please view this homepage at [UIHawk homepage](https://uihawk.github.io).
 ## Citation
 
 If you find our work helpful, please consider citing our paper.
